@@ -2,7 +2,7 @@
 
 set -e
 
-pnpm run build
+npm run build
 
 cd dist
 
@@ -10,6 +10,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f git@github.com:lambdax-podcast-guest/vueFrontEnd.github.io.git master
+git push -f git@github.com:lambdax-podcast-guest/FrontEndView.git master
 
 cd ../
