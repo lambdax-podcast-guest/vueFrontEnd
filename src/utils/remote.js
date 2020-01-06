@@ -10,7 +10,6 @@ class connector {
   async getTest() {
     let data = await axios.get("/weatherforecast");
     let ret = data.data;
-    // console.log('back',ret);
     return ret;
   }
 }
