@@ -8,7 +8,8 @@ export default new Vuex.Store({
     state: {
         Connector,
         weather: {},
-        all: []
+        all: [],
+        current:{}
     },
     mutations: {
         setWeather(state, data) {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
             if (Array.isArray(data)) {
                 state.all = data
             }
+        },
+        setList(state,data){
+            state.current=data
         }
     },
     actions: {
