@@ -5,21 +5,30 @@ import Connector from '@/utils/remote.js'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    Connector,
-    weather:{}
-  },
-  mutations: {
-    setWeather(state, data){      
-      state.weather=data
-    }
-  },
-  actions: {
-    async getWeather(ctx){
-      let weather = await Connector.getTest()
-      ctx.commit('setWeather',weather)
-    }
-  },
-  modules: {
-  }
+    state: {
+        Connector,
+        weather: {},
+        all: []
+    },
+    mutations: {
+        setWeather(state, data) {
+            state.weather = data
+        },
+        setAll(state, data) {
+            if (Array.isArray(data)) {
+                state.all = data
+            }
+        }
+    },
+    actions: {
+        async getWeather(ctx) {
+            let weather = await Connector.getTest()
+            ctx.commit('setWeather', weather)
+        },
+        async getPeople(ctx) {
+            let list = await Connector.getList()
+            ctx.commit('setAll', list)
+        }
+    },
+    modules: {}
 })
