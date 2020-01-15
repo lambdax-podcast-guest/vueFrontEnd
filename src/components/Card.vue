@@ -17,6 +17,10 @@ export default {
     id: [Number]
   },
   mounted: function() {
+<<<<<<< HEAD
+=======
+    console.log("yo");
+>>>>>>> 36fc48114ef2e0c10c807e59c58dcf254caede61
   },
   methods: {
     navTo: function() {
