@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     navTo: function() {
-      console.log(this.$router.push(`/${this.$props.id}`));
+      this.$router.push(`/${this.$props.id}`)
     }
   }
 };

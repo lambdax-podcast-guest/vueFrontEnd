@@ -1,7 +1,7 @@
 <template>
   <section class="container" v-if="user.name!=undefined">
-    <section class="name">{{user.name}}</section>
-    <section class="email">{{user.email}}</section>
+    <section class="name">Name: {{user.name}}</section>
+    <section class="email">Email: {{user.email}}</section>
   </section>
   <section class="container" v-else>Loading...</section>
 </template>
@@ -20,4 +20,18 @@ export default {
 </script>
 
 <style scoped>
+  .container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .name{
+    font-size: 2rem;
+  }
+  .email{
+    font-size:1.25rem;
+  }
+  .container > section{
+    margin:.5rem;
+  }
 </style>
