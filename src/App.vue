@@ -5,7 +5,7 @@
             </div>
         <div id="nav">
             <div>
-                <router-link to="/" exact="/">Home</router-link>
+                <router-link to="/">Home</router-link>
             </div>
             <div>
                 <router-link to="/all">List</router-link>
@@ -14,6 +14,15 @@
         <router-view />
     </div>
 </template>
+<script>
+export default {
+    data:function(){
+        return{
+            home:true
+        }
+    }
+}
+</script>
 
 <style>
 #nav {

@@ -20,48 +20,20 @@ class connector {
     async getList() {
         try {
             let data = await axios.get("/Guests");
-            data
-            // console.log(data);
-            //let ret = data.data
+            let ret = data.data
+            return ret
         } catch (err) {
-            // console.error(err);
-        }
-        // console.log('sending anyway');
-        let ret = [{
-            id: 0,
-            name: 'demo1',
-            email: 'demo@demo.dem'
-        }, {
-            id: 1,
-            name: 'demo2',
-            email: 'demo2@demo.dem'
-        }, {
-            id: 2,
-            name: 'demo3',
-            email: 'demo3@demo.dem'
-        }]
-        return ret
+            return err;
+        }       
     }
 
     async getSingle(who) {
         try {
             let data = await axios.get(`/Guests/${who.id}`)
-            data
-            // console.log(data);
-            let ret = [{
-                id: 0,
-                name: 'demo1',
-                email: 'demo@demo.dem'
-            }]
-
+            let ret =data.data
             return ret
         } catch (error) {
-            let ret = {
-                id: 0,
-                name: 'demo1',
-                email: 'demo@demo.dem'
-            }
-            return ret
+            return error
         }
     }
 
