@@ -17,11 +17,17 @@
         <section class="error-text">
             {{error}}
         </section>
+        <error/>
     </div>
 </template>
 
 <script>
+    import Error from '@/components/Error.vue'
+    
     export default {
+        components:{
+            Error
+        },
         data:function(){
             return{
                 name:'',

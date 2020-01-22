@@ -18,20 +18,27 @@ export default new Vuex.Store({
         },
         setAll(state, data) {
             if (Array.isArray(data)) {
+                state.error=''
                 state.all = data
             }
         },
         setList(state, data) {
             state.current = data
+            state.error=''
         },
         setOne(state, data) {
             state.current = data
+            state.error=''
         },
         addOne(state,data){
             state.all.push(data)
+            state.error=''
         },
         setError(state,data){
             state.error=data
+        },
+        updateUser(state,data){
+            state.all=state.all.map(i=>i.id===data.id?data:i)
         }
     },
     actions: {
@@ -57,7 +64,19 @@ export default new Vuex.Store({
         },
         async addUser(ctx,creds){
             let user = await Connector.newUser(creds.name,creds.email)
-            ctx.commit(user)
+            if(user.error){
+                ctx.commit('setError',user.reason.message)
+            }else{
+                ctx.commit('addOne',user)
+            }
+        },
+        async editUser(ctx,data){
+            let user = await Connector.updateUser(data.id,data.name,data.email)
+            if(user.error){
+                ctx.commit('setError',user.reason.message)
+            }else{
+                ctx.commit('updateUser',user)
+            }
         }
     },
     modules: {}

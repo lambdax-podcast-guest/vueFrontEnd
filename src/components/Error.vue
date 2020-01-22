@@ -17,5 +17,7 @@
 </script>
 
 <style scoped>
-
+    p{
+        color:red;
+    }
 </style>
