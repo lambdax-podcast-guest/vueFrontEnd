@@ -5,10 +5,13 @@
             </div>
         <div id="nav">
             <div>
-                <router-link to="/">Home</router-link>
+                <router-link to="/" exact>Home</router-link>
             </div>
             <div>
                 <router-link to="/all">List</router-link>
+            </div>
+            <div>
+                <router-link to="/new">New</router-link>
             </div>
         </div>
         <router-view />

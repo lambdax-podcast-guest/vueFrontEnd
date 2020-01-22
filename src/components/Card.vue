@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     navTo: function() {
-      this.$router.push(`/${this.$props.id}`)
+      this.$router.push(`/users/${this.$props.id}`)
     }
   }
 };

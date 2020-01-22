@@ -42,7 +42,6 @@ export default new Vuex.Store({
         async getPeople(ctx) {
             let list = await Connector.getList()
             if(list.error){
-                console.log(list.reason.message);
                 ctx.commit('setError',list.reason.message)
             }else{
                 ctx.commit('setAll', list)
