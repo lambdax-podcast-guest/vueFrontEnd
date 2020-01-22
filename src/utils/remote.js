@@ -44,12 +44,10 @@ class connector {
                 Email:email
             }
 
-            console.log('temp:', temp);
             let user = await axios.post('/guests', temp)
             
             return user
         } catch (err) {
-            console.error(err)
             return this.error(err)
         }
     }
