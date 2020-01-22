@@ -9,7 +9,8 @@ export default new Vuex.Store({
         Connector,
         weather: {},
         all: [],
-        current: {}
+        current: {},
+        error:''
     },
     mutations: {
         setWeather(state, data) {
@@ -25,6 +26,12 @@ export default new Vuex.Store({
         },
         setOne(state, data) {
             state.current = data
+        },
+        addOne(state,data){
+            state.all.push(data)
+        },
+        setError(state,data){
+            state.error=data
         }
     },
     actions: {
@@ -34,11 +41,24 @@ export default new Vuex.Store({
         },
         async getPeople(ctx) {
             let list = await Connector.getList()
-            ctx.commit('setAll', list)
+            if(list.error){
+                console.log(list.reason.message);
+                ctx.commit('setError',list.reason.message)
+            }else{
+                ctx.commit('setAll', list)
+            }
         },
         async getSingle(ctx, id) {
             let user = await Connector.getSingle(id)
-            ctx.commit('setOne', user)
+            if(user.error){
+                ctx.commit('setError',user.error.message)
+            }else{
+                ctx.commit('setOne', user)
+            }
+        },
+        async addUser(ctx,creds){
+            let user = await Connector.newUser(creds.name,creds.email)
+            ctx.commit(user)
         }
     },
     modules: {}

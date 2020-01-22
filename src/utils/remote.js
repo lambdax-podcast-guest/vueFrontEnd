@@ -23,7 +23,7 @@ class connector {
             let ret = data.data
             return ret
         } catch (err) {
-            return err;
+            return this.error(err);
         }       
     }
 
@@ -32,8 +32,8 @@ class connector {
             let data = await axios.get(`/Guests/${who.id}`)
             let ret =data.data
             return ret
-        } catch (error) {
-            return error
+        } catch (err) {
+            return this.error(err)
         }
     }
 
@@ -66,6 +66,13 @@ class connector {
         return {
             status: 0,
             data: 'User Deleted'
+        }
+    }
+
+    error(err){
+        return{
+            error:true,
+            reason:err
         }
     }
 }
