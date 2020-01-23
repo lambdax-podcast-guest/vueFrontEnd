@@ -19,45 +19,50 @@ class connector {
 
     async getList() {
         try {
-            let data = await axios.get("/Guests");
+            let data = await axios.get("/guests");
             let ret = data.data
             return ret
         } catch (err) {
-            return err;
+            return this.error(err);
         }       
     }
 
     async getSingle(who) {
         try {
-            let data = await axios.get(`/Guests/${who.id}`)
+            let data = await axios.get(`/guests/${who.id}`)
             let ret =data.data
             return ret
-        } catch (error) {
-            return error
+        } catch (err) {
+            return this.error(err)
         }
     }
 
     async newUser(name, email) {
-        await axios.post('/Guests', {
-            name,
-            email
-        })
-        return {
-            status: 0,
-            data: 'User Created'
+        try {
+            let temp={
+                Name:name,
+                Email:email
+            }
+
+            let user = await axios.post('/guests', temp)
+            
+            return user
+        } catch (err) {
+            return this.error(err)
         }
     }
 
     async updateUser(id, name, email) {
-        let data = await axios.put(`/Guests/${id}`, {
-            id,
-            name,
-            email
-        })
-        data
-        return {
-            status: 0,
-            data: 'User Updated'
+        try {
+            let data = await axios.put(`/Guests/${id}`, {
+                id:Number(id),
+                Name:name,
+                Email:email
+            })
+            
+            return data
+        } catch (err) {
+            return this.error(err)
         }
     }
 
@@ -66,6 +71,13 @@ class connector {
         return {
             status: 0,
             data: 'User Deleted'
+        }
+    }
+
+    error(err){
+        return{
+            error:true,
+            reason:err
         }
     }
 }
