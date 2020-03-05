@@ -1,4 +1,6 @@
 # podcast-guest
+## Deployed:
+https://podcast-guest.netlify.com/
 
 ## Project setup
 ```
