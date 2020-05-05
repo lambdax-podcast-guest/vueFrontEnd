@@ -11,7 +11,7 @@
       <div class="section-txt">
         <h2 class="txt-lg">The simple way to find your next guest</h2>
         <p>Discover knowledgeable and engaged guest speakers to take your podcast to new lengths!</p>
-        <button>Get Started</button>
+        <button @click="handleStart">Get Started</button>
       </div>
       <img src="../assets/undraw_people_search_wctu.png" />
     </div>
@@ -36,7 +36,7 @@
       <div class="section-txt">
         <h2 class="txt-lg">A wide coverage of topics, ideas, and trends</h2>
         <p>It can be overwhelming trying to find the right people to talk to. Our categorized listings make it easy.</p>
-        <button>Get Started</button>
+        <button @click="handleStart">Get Started</button>
       </div>
     </div>
   </div>
@@ -44,7 +44,12 @@
 
 <script>
 export default {
-  name: "home"
+  name: "home",
+  methods: {
+    handleStart: function() {
+      this.$router.push("register");
+    }
+  }
 };
 </script>
 

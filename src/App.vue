@@ -48,4 +48,14 @@ body {
 .page-wrapper {
   padding: 2rem;
 }
+
+button {
+  background-color: #636cff;
+  color: white;
+  padding: 1rem 3rem;
+  border-radius: 1.9rem;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
 </style>
