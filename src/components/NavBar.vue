@@ -29,18 +29,13 @@ export default {
   padding: 2rem;
 }
 
-.logo {
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-
 .nav {
   display: flex;
 }
 
 a {
   text-align: center;
+  font-size: 1.2rem;
   padding: 1rem;
   text-decoration: none;
   text-transform: uppercase;
@@ -49,5 +44,11 @@ a {
 
 .router-link-active {
   font-weight: bold;
+}
+
+.logo a {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 </style>

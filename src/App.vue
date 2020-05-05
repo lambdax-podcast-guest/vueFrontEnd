@@ -53,6 +53,7 @@ button {
   background-color: #636cff;
   color: white;
   padding: 1rem 3rem;
+  margin: 1rem 0 0.5rem;
   border-radius: 1.9rem;
   border: none;
   font-family: inherit;
