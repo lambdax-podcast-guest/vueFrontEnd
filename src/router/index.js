@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
-import List from '../views/List.vue';
-import Single from '../views/Single.vue';
-import Add from '../views/Add.vue';
-import SignIn from '../views/SignInPage.vue';
-import Register from '../views/RegisterPage.vue';
-import Dashboard from '../views/DashboardPage.vue';
-import Settings from '../views/SettingsPage.vue';
+import Home from '@/views/Home.vue';
+import List from '@/views/List.vue';
+import Single from '@/views/Single.vue';
+import Add from '@/views/Add.vue';
+import SignIn from '@/views/SignInPage.vue';
+import Register from '@/views/RegisterPage.vue';
+import Dashboard from '@/views/DashboardPage.vue';
+import Settings from '@/views/SettingsPage.vue';
 
 Vue.use(VueRouter);
 

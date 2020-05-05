@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     Register PAGE
   </div>
 </template>

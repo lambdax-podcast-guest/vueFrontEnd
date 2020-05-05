@@ -26,9 +26,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  border-bottom: 1px solid silver;
-  margin-bottom: 2rem;
+  padding: 2rem;
 }
 
 .logo {
@@ -43,7 +41,7 @@ export default {
 
 a {
   text-align: center;
-  padding: 0.5rem;
+  padding: 1rem;
   text-decoration: none;
   text-transform: uppercase;
   color: inherit;

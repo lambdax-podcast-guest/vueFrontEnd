@@ -1,12 +1,14 @@
 <template>
     <div id="app">
         <NavBar></NavBar>
-        <router-view />
+        <div class="page-wrapper">
+            <router-view />
+        </div>
     </div>
 </template>
 
 <script>
-import NavBar from "../src/components/NavBar.vue";
+import NavBar from "@/components/NavBar.vue";
 
 export default {
   components: { NavBar },
@@ -42,4 +44,8 @@ body {
   margin: 0;
   position: relative;
 } */
+
+.page-wrapper {
+  padding: 2rem;
+}
 </style>
