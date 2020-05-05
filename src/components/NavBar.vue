@@ -1,0 +1,55 @@
+<template>
+  <div class="header">
+    <div class="logo">
+      <router-link to="/" exact>Podcast Guest List</router-link>
+    </div>
+    <div class="nav">
+      <router-link to="/" exact>Sign in</router-link>
+      <router-link to="/" exact>Register</router-link>
+      <router-link to="/all">Guest List</router-link>
+      <router-link to="/new">New</router-link>
+      <router-link to="/" exact>Dashboard</router-link>
+      <router-link to="/" exact>Settings</router-link>
+      <router-link to="/" exact>Sign Out</router-link>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "NavBar"
+};
+</script>
+
+<style scoped>
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid silver;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nav {
+  display: flex;
+}
+
+a {
+  text-align: center;
+  padding: 0.5rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+.router-link-active {
+  font-weight: bold;
+}
+</style>

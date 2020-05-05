@@ -1,53 +1,45 @@
 <template>
     <div id="app">
-            <div class="logo">
-                Podcast Guest
-            </div>
-        <div id="nav">
-            <div>
-                <router-link to="/" exact>Home</router-link>
-            </div>
-            <div>
-                <router-link to="/all">List</router-link>
-            </div>
-            <div>
-                <router-link to="/new">New</router-link>
-            </div>
-        </div>
+        <NavBar></NavBar>
         <router-view />
     </div>
 </template>
 
 <script>
+import NavBar from "../src/components/NavBar.vue";
+
 export default {
-    data:function(){
-        return{
-            home:true
-        }
-    }
-}
+  components: { NavBar },
+  data: function() {
+    return {
+      home: true
+    };
+  }
+};
 </script>
 
 <style>
-    #nav {
-        display: flex;
-        justify-content: center;
-        padding:1rem;
-        border-bottom:1px solid black;
-    }
-    #app {
-        width: 100vw;
-        margin: 0;
-        position: relative;
-    }
-    * {
-        box-sizing: border-box;
-    }
-    #nav > div {
-        width:5rem;
-        height:4rem;
-        text-align: center;
-        padding-top:1.25rem;
-        border:1px solid black;
-    }
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  line-height: 1.5;
+  font-family: "Open Sans", sans-serif;
+}
+
+#app {
+  width: 100vw;
+  margin: 0;
+  position: relative;
+}
 </style>
