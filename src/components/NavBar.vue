@@ -4,12 +4,12 @@
       <router-link to="/" exact>Podcast Guest List</router-link>
     </div>
     <div class="nav">
-      <router-link to="/" exact>Sign in</router-link>
-      <router-link to="/" exact>Register</router-link>
+      <router-link to="/signin">Sign in</router-link>
+      <router-link to="/register">Register</router-link>
       <router-link to="/all">Guest List</router-link>
       <router-link to="/new">New</router-link>
-      <router-link to="/" exact>Dashboard</router-link>
-      <router-link to="/" exact>Settings</router-link>
+      <router-link to="/dashboard">Dashboard</router-link>
+      <router-link to="/settings">Settings</router-link>
       <router-link to="/" exact>Sign Out</router-link>
     </div>
   </div>

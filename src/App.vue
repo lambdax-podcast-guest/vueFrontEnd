@@ -37,9 +37,9 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-#app {
+/* #app {
   width: 100vw;
   margin: 0;
   position: relative;
-}
+} */
 </style>
