@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import { mapState } from "vuex"
-import Card from "@/components/Card.vue"
-import Error from '@/components/Error.vue'
+import { mapState } from "vuex";
+import Card from "@/components/Card.vue";
+import Error from "@/components/Error.vue";
 export default {
   components: {
     Card,
@@ -22,8 +22,8 @@ export default {
   computed: mapState({
     users: state => state.all,
     usersAlias: "users",
-    error:state=>state.error,
-    errorAlias:'error'
+    error: state => state.error,
+    errorAlias: "error"
   }),
   mounted: function() {
     this.$store.dispatch("getPeople");

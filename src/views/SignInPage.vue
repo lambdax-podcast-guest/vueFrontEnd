@@ -13,7 +13,7 @@
         <label>Password</label>
         <input type="password" name="password" v-model="input.password" />
       </div>
-      <button>Login</button>
+      <button @click="login">Login</button>
     </div>
   </div>
 </template>
@@ -28,6 +28,16 @@ export default {
         password: ""
       }
     };
+  },
+  methods: {
+    login() {
+      console.log(this.input.email);
+      console.log(this.input.password);
+      this.input.email = "";
+      this.input.password = "";
+      this.$store.dispatch("signIn");
+      this.$router.push("all");
+    }
   }
 };
 </script>

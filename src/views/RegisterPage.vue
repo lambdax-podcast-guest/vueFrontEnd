@@ -30,15 +30,15 @@
       <div>
         <label>You are a...</label>
         <div class="checkbox-row">
-          <input type="checkbox" id="checkboxHost" v-model="checkedHost">
+          <input type="checkbox" id="checkboxHost" v-model="input.checkedHost">
           <label for="checkboxHost">Podcast Host</label>
         </div>
         <div class="checkbox-row">
-          <input type="checkbox" id="checkboxGuest" v-model="checkedGuest">
+          <input type="checkbox" id="checkboxGuest" v-model="input.checkedGuest">
           <label for="checkboxGuest">Guest Speaker</label>
         </div>
       </div>
-      <button>Create Account</button>
+      <button @click="createAccount">Create Account</button>
       <p>Already have an account? <router-link to="/signin">Sign In Here.</router-link></p>
     </div>
   </div>
@@ -59,6 +59,19 @@ export default {
         checkedGuest: false
       }
     };
+  },
+  methods: {
+    createAccount() {
+      console.log(this.input.firstName);
+      console.log(this.input.lastName);
+      console.log(this.input.email);
+      console.log(this.input.password);
+      console.log(this.input.passwordRepeat);
+      console.log(this.input.checkedHost);
+      console.log(this.input.checkedGuest);
+      this.$store.dispatch("signIn");
+      this.$router.push("all");
+    }
   }
 };
 </script>
