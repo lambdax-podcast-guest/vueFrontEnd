@@ -1,11 +1,16 @@
 <template>
   <section class="container" @click="navTo">
-    <section class="name">
-      <p>{{name}}</p>
-    </section>
-    <section class="email">
-      <p>{{email}}</p>
-    </section>
+    <div class="profile-pic">
+      avatar
+    </div>
+    <div>
+      <div class="name">
+        <p>{{name}}</p>
+      </div>
+      <div class="email">
+        <p>{{email}}</p>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -16,11 +21,10 @@ export default {
     email: [String],
     id: [Number]
   },
-  mounted: function() {
-  },
+  mounted: function() {},
   methods: {
     navTo: function() {
-      this.$router.push(`/users/${this.$props.id}`)
+      this.$router.push(`/users/${this.$props.id}`);
     }
   }
 };
@@ -29,17 +33,36 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  width: 90%;
-  margin: 0.5rem auto;
-}
-.container > section {
-  border: 1px black solid;
+  align-items: center;
+  width: 50%;
+  /* margin: 0.5rem auto; */
+  margin: 1rem 0;
+  cursor: pointer;
+  border: 1px solid #b5b1ff;
+  border-radius: 1rem;
   padding: 1rem;
 }
-.container > .name {
-  width: 25%;
+
+/* .container > section {
+} */
+
+.profile-pic {
+  width: 5rem;
+  height: 5rem;
+  margin-right: 1rem;
+  border-radius: 50%;
+  background-color: #c4c4c4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.container > .email {
+
+.name {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* .container > .email {
   width: 75%;
-}
+} */
 </style>

@@ -22,45 +22,45 @@
 </template>
 
 <script>
-    import Error from '@/components/Error.vue'
-    
-    export default {
-        components:{
-            Error
-        },
-        data:function(){
-            return{
-                name:'',
-                email:'',
-                disable:false,
-                error:''
-            }
-        },
-        methods:{
-            testAndSubmit:function(e){
-                e.preventDefault()
-                this.error=''
-                if (this.name!=''&&this.email!=''&&this.email.includes('@')) {
-                    this.disable=true;
-                    this.$store.dispatch('addUser',{name:this.name,email:this.email})
-                }else{
-                    this.error='Please fill out all fields in our form'
-                }
-            }
-        }
+// import Error from "@/components/Error.vue";
+
+export default {
+  //   components: {
+  //     Error
+  //   },
+  data: function() {
+    return {
+      name: "",
+      email: "",
+      disable: false,
+      error: ""
+    };
+  },
+  methods: {
+    testAndSubmit: function(e) {
+      e.preventDefault();
+      this.error = "";
+      if (this.name != "" && this.email != "" && this.email.includes("@")) {
+        this.disable = true;
+        this.$store.dispatch("addUser", { name: this.name, email: this.email });
+      } else {
+        this.error = "Please fill out all fields in our form";
+      }
     }
+  }
+};
 </script>
 
 <style scoped>
-    .form-control{
-        margin:1rem;
-    }
-    div{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .error-text{
-        color:red;
-    }
+.form-control {
+  margin: 1rem;
+}
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.error-text {
+  color: red;
+}
 </style>
