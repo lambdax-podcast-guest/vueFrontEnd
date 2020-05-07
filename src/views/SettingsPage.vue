@@ -23,7 +23,7 @@ export default {
   margin: 0 auto;
 }
 
-.settings h1 {
+h1 {
   font-weight: normal;
   font-size: 3rem;
 }
