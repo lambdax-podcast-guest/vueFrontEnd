@@ -8,8 +8,7 @@
       <router-link to="/register">Register</router-link>
     </div>
     <div v-else class="nav">
-      <router-link to="/all">Guest List</router-link>
-      <router-link to="/new">New</router-link>
+      <router-link to="/guestlist">Guest List</router-link>
       <router-link to="/dashboard">Dashboard</router-link>
       <router-link to="/settings">Settings</router-link>
       <div @click="signOut" class="sign-out">Sign Out</div>

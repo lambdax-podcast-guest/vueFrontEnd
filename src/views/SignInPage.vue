@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "SignIn",
   data() {
@@ -30,13 +32,14 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["signIn"]),
     login() {
       console.log(this.input.email);
       console.log(this.input.password);
       this.input.email = "";
       this.input.password = "";
-      this.$store.dispatch("signIn");
-      this.$router.push("all");
+      this.signIn();
+      this.$router.push("guestlist");
     }
   }
 };

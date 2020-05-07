@@ -21,6 +21,8 @@ export default {
 </script>
 
 <style>
+/* These styles are global and aren't only scoped to this component */
+
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 
 * {

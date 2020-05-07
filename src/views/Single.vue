@@ -33,64 +33,72 @@
 
 <script>
 import { mapState } from "vuex";
-import Error from '@/components/Error.vue'
+import Error from "@/components/Error.vue";
 export default {
-    data:function(){
-        return{
-            editing:false,
-            err:'',
-            id:this.$route.params.id,
-            disable:false
-        }
+  data: function() {
+    return {
+      editing: false,
+      err: "",
+      id: this.$route.params.id,
+      disable: false
+    };
+  },
+  components: {
+    Error
+  },
+  computed: mapState({
+    user: state => state.current,
+    userAlias: "user"
+  }),
+  mounted: function() {
+    this.$store.dispatch("getSingle", { id: this.$route.params.id });
+  },
+  methods: {
+    edit: function(e) {
+      e.preventDefault();
+      this.editing = true;
     },
-    components:{
-        Error
-    },
-    computed: mapState({
-        user: state => state.current,
-        userAlias: "user"
-    }),
-    mounted: function() {
-        this.$store.dispatch("getSingle", { id: this.$route.params.id });
-    },
-    methods:{
-        edit:function(e){
-            e.preventDefault();
-            this.editing=true;
-        },
-        testAndSubmit:function(e){
-            e.preventDefault()
-            if(this.user.name!=''&&this.user.email!=''&&this.user.email.includes('@')){
-                this.editing=false
-                this.disable=false
-                this.$store.dispatch('editUser',{id:this.id,name:this.user.name,email:this.user.email})
-            }else{
-                this.err='Please fill out the entirety of the form'
-            }
-        }
+    testAndSubmit: function(e) {
+      e.preventDefault();
+      if (
+        this.user.name != "" &&
+        this.user.email != "" &&
+        this.user.email.includes("@")
+      ) {
+        this.editing = false;
+        this.disable = false;
+        this.$store.dispatch("editUser", {
+          id: this.id,
+          name: this.user.name,
+          email: this.user.email
+        });
+      } else {
+        this.err = "Please fill out the entirety of the form";
+      }
     }
+  }
 };
 </script>
 
 <style scoped>
-    .container{
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-    .name{
-        font-size: 2rem;
-    }
-    .email{
-        font-size:1.25rem;
-    }
-    .container > section{
-        margin:.5rem;
-    }
-    .form-control{
-        margin:1rem;
-    }
-    .error-text{
-        color:red;
-    }
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.name {
+  font-size: 2rem;
+}
+.email {
+  font-size: 1.25rem;
+}
+.container > section {
+  margin: 0.5rem;
+}
+.form-control {
+  margin: 1rem;
+}
+.error-text {
+  color: red;
+}
 </style>

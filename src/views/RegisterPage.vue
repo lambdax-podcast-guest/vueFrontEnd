@@ -39,12 +39,17 @@
         </div>
       </div>
       <button @click="createAccount">Create Account</button>
+      <section class="error-text">
+        {{error}}
+      </section>
       <p>Already have an account? <router-link to="/signin">Sign In Here.</router-link></p>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "Register",
   data() {
@@ -57,20 +62,30 @@ export default {
         passwordRepeat: "",
         checkedHost: false,
         checkedGuest: false
-      }
+      },
+      error: ""
     };
   },
   methods: {
-    createAccount() {
-      console.log(this.input.firstName);
-      console.log(this.input.lastName);
-      console.log(this.input.email);
-      console.log(this.input.password);
-      console.log(this.input.passwordRepeat);
-      console.log(this.input.checkedHost);
-      console.log(this.input.checkedGuest);
-      this.$store.dispatch("signIn");
-      this.$router.push("all");
+    ...mapActions(["addUser", "signIn"]),
+    async createAccount() {
+      this.error = "";
+      if (
+        this.input.firstName !== "" &&
+        this.input.lastName !== "" &&
+        this.input.email !== "" &&
+        this.input.email.includes("@")
+      ) {
+        this.disable = true;
+        await this.addUser({
+          name: `${this.input.firstName} ${this.input.lastName}`,
+          email: this.input.email
+        });
+        this.signIn();
+        this.$router.push("guestlist");
+      } else {
+        this.error = "Please fill out all fields in our form";
+      }
     }
   }
 };
@@ -149,5 +164,9 @@ input {
 .checkbox-row label {
   font-weight: normal;
   margin-left: 0.5rem;
+}
+
+.error-text {
+  color: red;
 }
 </style>
