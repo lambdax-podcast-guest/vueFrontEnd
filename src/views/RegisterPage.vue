@@ -30,21 +30,26 @@
       <div>
         <label>You are a...</label>
         <div class="checkbox-row">
-          <input type="checkbox" id="checkboxHost" v-model="checkedHost">
+          <input type="checkbox" id="checkboxHost" v-model="input.checkedHost">
           <label for="checkboxHost">Podcast Host</label>
         </div>
         <div class="checkbox-row">
-          <input type="checkbox" id="checkboxGuest" v-model="checkedGuest">
+          <input type="checkbox" id="checkboxGuest" v-model="input.checkedGuest">
           <label for="checkboxGuest">Guest Speaker</label>
         </div>
       </div>
-      <button>Create Account</button>
+      <button @click="createAccount">Create Account</button>
+      <section class="error-text">
+        {{error}}
+      </section>
       <p>Already have an account? <router-link to="/signin">Sign In Here.</router-link></p>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "Register",
   data() {
@@ -57,8 +62,31 @@ export default {
         passwordRepeat: "",
         checkedHost: false,
         checkedGuest: false
-      }
+      },
+      error: ""
     };
+  },
+  methods: {
+    ...mapActions(["addUser", "signIn"]),
+    async createAccount() {
+      this.error = "";
+      if (
+        this.input.firstName !== "" &&
+        this.input.lastName !== "" &&
+        this.input.email !== "" &&
+        this.input.email.includes("@")
+      ) {
+        this.disable = true;
+        await this.addUser({
+          name: `${this.input.firstName} ${this.input.lastName}`,
+          email: this.input.email
+        });
+        this.signIn();
+        this.$router.push("guestlist");
+      } else {
+        this.error = "Please fill out all fields in our form";
+      }
+    }
   }
 };
 </script>
@@ -136,5 +164,9 @@ input {
 .checkbox-row label {
   font-weight: normal;
   margin-left: 0.5rem;
+}
+
+.error-text {
+  color: red;
 }
 </style>

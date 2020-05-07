@@ -13,12 +13,14 @@
         <label>Password</label>
         <input type="password" name="password" v-model="input.password" />
       </div>
-      <button>Login</button>
+      <button @click="login">Login</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "SignIn",
   data() {
@@ -28,6 +30,17 @@ export default {
         password: ""
       }
     };
+  },
+  methods: {
+    ...mapActions(["signIn"]),
+    login() {
+      console.log(this.input.email);
+      console.log(this.input.password);
+      this.input.email = "";
+      this.input.password = "";
+      this.signIn();
+      this.$router.push("guestlist");
+    }
   }
 };
 </script>

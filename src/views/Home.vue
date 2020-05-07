@@ -46,7 +46,7 @@
 export default {
   name: "home",
   methods: {
-    handleStart: function() {
+    handleStart() {
       this.$router.push("register");
     }
   }
