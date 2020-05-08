@@ -1,8 +1,14 @@
 <template>
   <div class="guest-list page">
     <h1>Guest List</h1>
-    <div v-if="users.length > 0" >
-      <card v-for="user in users" :key="user.id" :name="user.name" :email="user.email" :id="user.id" />
+    <div v-if="users.length > 0">
+      <card
+        v-for="user in users"
+        :key="user.id"
+        :name="user.name"
+        :email="user.email"
+        :id="user.id"
+      />
     </div>
     <div v-else-if="error.length>0">
       <error />
