@@ -1,12 +1,12 @@
 <template>
   <div class="settings page">
-    <div class=header>
-      <h1>Hello, </h1>
+    <div class="header">
+      <h1>Hello,</h1>
       <p>Tell us a little about yourself!</p>
     </div>
     <div class="settings-content">
-      <router-link to="settings/advanced">Advanced Settings</router-link>
-      <router-link to="settings/profilepreview">Profile Preview</router-link>
+      <router-link to="/settings/advanced">Advanced Settings</router-link>
+      <router-link to="/settings/profilepreview">Profile Preview</router-link>
     </div>
   </div>
 </template>
