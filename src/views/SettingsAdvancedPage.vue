@@ -1,8 +1,9 @@
 <template>
   <div class="settings page">
     <div class="header">
-      <h1>Hello, </h1>
-      <p>Advanced Settings</p>
+      <SettingsHeader>
+        <p>Advanced Settings</p>
+      </SettingsHeader>
     </div>
     <div class="settings-content">
       <router-link :to="{name: 'Settings'}">Basic Settings</router-link>
@@ -11,8 +12,11 @@
 </template>
 
 <script>
+import SettingsHeader from "@/components/SettingsHeader.vue";
+
 export default {
-  name: "AdvancedSettings"
+  name: "AdvancedSettings",
+  components: { SettingsHeader }
 };
 </script>
 
