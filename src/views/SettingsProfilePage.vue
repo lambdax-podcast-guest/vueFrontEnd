@@ -6,7 +6,7 @@
       </SettingsHeader>
     </div>
     <div class="settings-content">
-      <router-link :to="{name: 'Settings'}">Basic Settings</router-link>
+      <router-link :to="{name: 'BasicSettings'}">Basic Settings</router-link>
     </div>
   </div>
 </template>

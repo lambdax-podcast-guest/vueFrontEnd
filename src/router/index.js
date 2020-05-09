@@ -8,6 +8,7 @@ import SignIn from '../views/SignInPage.vue';
 import Register from '../views/RegisterPage.vue';
 import Dashboard from '../views/DashboardPage.vue';
 import Settings from '../views/SettingsPage.vue';
+import BasicSettings from '../views/SettingsBasicPage.vue';
 import Profile from '../views/SettingsProfilePage.vue';
 import AdvancedSettings from '../views/SettingsAdvancedPage.vue';
 
@@ -53,6 +54,11 @@ export default new VueRouter({
 			component: Settings,
 			children: [
 				{
+					path: 'basic',
+					name: 'BasicSettings',
+					component: BasicSettings,
+				},
+				{
 					path: 'profilepreview',
 					name: 'Profile',
 					component: Profile,
@@ -62,7 +68,7 @@ export default new VueRouter({
 					name: 'AdvancedSettings',
 					component: AdvancedSettings,
 				},
-			]
+			],
 		},
-	]
+	],
 });

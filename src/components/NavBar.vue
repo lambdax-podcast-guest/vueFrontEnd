@@ -10,7 +10,7 @@
     <div v-else class="nav">
       <router-link to="/guestlist">Guest List</router-link>
       <router-link to="/dashboard">Dashboard</router-link>
-      <router-link to="/settings">Settings</router-link>
+      <router-link to="/settings/basic">Settings</router-link>
       <div @click="signOut" class="sign-out">Sign Out</div>
     </div>
   </div>
