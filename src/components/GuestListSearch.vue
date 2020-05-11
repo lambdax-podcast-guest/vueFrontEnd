@@ -28,7 +28,7 @@ export default {
 .guest-search {
   display: flex;
   flex-direction: column;
-  margin: 2rem 0;
+  margin: 1rem auto 2rem;
   width: 30rem;
 }
 
