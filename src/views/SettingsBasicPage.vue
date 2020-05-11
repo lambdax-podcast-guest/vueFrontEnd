@@ -45,23 +45,23 @@
           <label>User Type</label>
           <div class="settings-checkbox">
             <div class="checkbox-row">
-              <input type="checkbox" id="checkboxHost">
-              <label for="checkboxHost">Podcast Host</label>
+              <input type="checkbox" id="typeCheckboxHost">
+              <label for="typeCheckboxHost">Podcast Host</label>
             </div>
             <div class="checkbox-row">
-              <input type="checkbox" id="checkboxGuest">
-              <label for="checkboxGuest">Guest Speaker</label>
+              <input type="checkbox" id="typeCheckboxGuest">
+              <label for="typeCheckboxGuest">Guest Speaker</label>
             </div>
           </div>
           <label>Seeking</label>
           <div class="settings-checkbox">
             <div class="checkbox-row">
-              <input type="checkbox" id="checkboxHost">
-              <label for="checkboxHost">Podcast Host</label>
+              <input type="checkbox" id="seekingCheckboxHost">
+              <label for="seekingCheckboxHost">Podcast Hosts</label>
             </div>
             <div class="checkbox-row">
-              <input type="checkbox" id="checkboxGuest">
-              <label for="checkboxGuest">Guest Speaker</label>
+              <input type="checkbox" id="seekingCheckboxGuest">
+              <label for="seekingCheckboxGuest">Guest Speakers</label>
             </div>
           </div>
           <div>
@@ -155,11 +155,6 @@ export default {
   margin-bottom: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-}
-
-.settings-checkbox .checkbox-row label {
-  width: 18rem;
 }
 
 .settings-content-bottom-right button {
@@ -186,5 +181,6 @@ label {
 a,
 p {
   font-size: 1.2rem;
+  text-decoration: none;
 }
 </style>
