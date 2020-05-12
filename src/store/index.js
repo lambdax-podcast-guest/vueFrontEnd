@@ -1,22 +1,18 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import Connector from '@/utils/remote.js';
+
+import { getList, getSingle, newUser, updateUser } from './async';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
 		signedIn: false,
-		Connector,
-		// weather: {},
 		all: [],
 		current: {},
 		error: '',
 	},
 	mutations: {
-		// setWeather(state, data) {
-		//     state.weather = data
-		// },
 		signIn(state) {
 			state.signedIn = true;
 		},
@@ -49,10 +45,6 @@ export default new Vuex.Store({
 		},
 	},
 	actions: {
-		// async getWeather(ctx) {
-		// 	let weather = await Connector.getTest();
-		// 	ctx.commit('setWeather', weather);
-		// },
 		signIn(context) {
 			context.commit('signIn');
 		},
@@ -60,7 +52,7 @@ export default new Vuex.Store({
 			context.commit('signOut');
 		},
 		async getPeople(ctx) {
-			let list = await Connector.getList();
+			let list = await getList();
 			if (list.error) {
 				ctx.commit('setError', list.reason.message);
 			} else {
@@ -68,7 +60,7 @@ export default new Vuex.Store({
 			}
 		},
 		async getSingle(ctx, id) {
-			let user = await Connector.getSingle(id);
+			let user = await getSingle(id);
 			if (user.error) {
 				ctx.commit('setError', user.error.message);
 			} else {
@@ -76,7 +68,7 @@ export default new Vuex.Store({
 			}
 		},
 		async addUser(ctx, creds) {
-			let user = await Connector.newUser(creds.name, creds.email);
+			let user = await newUser(creds.name, creds.email);
 			if (user.error) {
 				ctx.commit('setError', user.reason.message);
 			} else {
@@ -84,7 +76,7 @@ export default new Vuex.Store({
 			}
 		},
 		async editUser(ctx, data) {
-			let user = await Connector.updateUser(data.id, data.name, data.email);
+			let user = await updateUser(data.id, data.name, data.email);
 			if (user.error) {
 				ctx.commit('setError', user.reason.message);
 			} else {
@@ -92,5 +84,4 @@ export default new Vuex.Store({
 			}
 		},
 	},
-	modules: {},
 });

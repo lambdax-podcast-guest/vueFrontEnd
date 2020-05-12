@@ -1,8 +1,6 @@
 <template>
   <section class="container" @click="navTo">
-    <div class="profile-pic">
-      avatar
-    </div>
+    <ProfilePic />
     <div>
       <div class="name">
         <p>{{name}}</p>
@@ -15,12 +13,15 @@
 </template>
 
 <script>
+import ProfilePic from "@/components/ProfileAvatar.vue";
+
 export default {
   props: {
     name: [String],
     email: [String],
     id: [Number]
   },
+  components: { ProfilePic },
   mounted: function() {},
   methods: {
     navTo: function() {
@@ -45,17 +46,6 @@ export default {
 
 /* .container > section {
 } */
-
-.profile-pic {
-  width: 5rem;
-  height: 5rem;
-  margin-right: 1rem;
-  border-radius: 50%;
-  background-color: #c4c4c4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .name {
   font-weight: bold;

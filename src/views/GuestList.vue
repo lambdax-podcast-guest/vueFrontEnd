@@ -1,8 +1,15 @@
 <template>
   <div class="guest-list page">
     <h1>Guest List</h1>
-    <div v-if="users.length > 0" >
-      <card v-for="user in users" :key="user.id" :name="user.name" :email="user.email" :id="user.id" />
+    <GuestListSearch />
+    <div v-if="users.length > 0">
+      <card
+        v-for="user in users"
+        :key="user.id"
+        :name="user.name"
+        :email="user.email"
+        :id="user.id"
+      />
     </div>
     <div v-else-if="error.length>0">
       <error />
@@ -17,12 +24,14 @@
 import { mapState } from "vuex";
 import Card from "@/components/Card.vue";
 import Error from "@/components/Error.vue";
+import GuestListSearch from "@/components/GuestListSearch";
 
 export default {
   name: "GuestList",
   components: {
     Card,
-    Error
+    Error,
+    GuestListSearch
   },
   computed: mapState({
     users: state => state.all,
@@ -41,5 +50,10 @@ export default {
 .guest-list {
   max-width: 90rem;
   margin: 0 auto;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 3rem;
 }
 </style>

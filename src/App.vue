@@ -11,12 +11,7 @@
 import NavBar from "@/components/NavBar.vue";
 
 export default {
-  components: { NavBar },
-  data: function() {
-    return {
-      home: true
-    };
-  }
+  components: { NavBar }
 };
 </script>
 
