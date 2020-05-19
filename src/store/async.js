@@ -21,14 +21,12 @@ async function register(credentials) {
 
 async function login(credentials) {
 	try {
-		console.log(credentials);
 		const data = await axios.post('/Account/Login', credentials);
-
-		console.log(data);
 
 		const ret = data.data;
 		return ret;
 	} catch (err) {
+		console.log('ERR');
 		return error(err);
 	}
 }

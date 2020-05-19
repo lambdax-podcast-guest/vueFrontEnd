@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import router from '../router';
 
 import {
 	register,
@@ -63,7 +64,7 @@ export default new Vuex.Store({
 				context.commit('setError', user.reason.message);
 			} else {
 				context.commit('addOne', user);
-				this.$router.push('guestlist');
+				router.push('guestlist');
 			}
 		},
 		async signIn(context, credentials) {
@@ -73,7 +74,7 @@ export default new Vuex.Store({
 				context.commit('setError', user.error.message);
 			} else {
 				context.commit('signIn');
-				this.$router.push('guestlist');
+				router.push('guestlist');
 			}
 		},
 		signOut(context) {
