@@ -1,13 +1,24 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import { getList, getSingle, newUser, updateUser } from './async';
+import {
+	register,
+	login,
+	getList,
+	getSingle,
+	// newUser,
+	updateUser,
+} from './async';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
 		signedIn: false,
+		userFirstName: '',
+		userLastName: '',
+		userEmail: '',
+		userRoles: [],
 		all: [],
 		current: {},
 		error: '',
@@ -45,42 +56,51 @@ export default new Vuex.Store({
 		},
 	},
 	actions: {
-		signIn(context) {
-			context.commit('signIn');
+		async register(context, credentials) {
+			const user = await register(credentials);
+
+			if (user.error) {
+				context.commit('setError', user.reason.message);
+			} else {
+				context.commit('addOne', user);
+				this.$router.push('guestlist');
+			}
+		},
+		async signIn(context, credentials) {
+			const user = await login(credentials);
+
+			if (user.error) {
+				context.commit('setError', user.error.message);
+			} else {
+				context.commit('signIn');
+				this.$router.push('guestlist');
+			}
 		},
 		signOut(context) {
 			context.commit('signOut');
 		},
-		async getPeople(ctx) {
+		async getPeople(context) {
 			let list = await getList();
 			if (list.error) {
-				ctx.commit('setError', list.reason.message);
+				context.commit('setError', list.reason.message);
 			} else {
-				ctx.commit('setAll', list);
+				context.commit('setAll', list);
 			}
 		},
-		async getSingle(ctx, id) {
+		async getSingle(context, id) {
 			let user = await getSingle(id);
 			if (user.error) {
-				ctx.commit('setError', user.error.message);
+				context.commit('setError', user.error.message);
 			} else {
-				ctx.commit('setOne', user);
+				context.commit('setOne', user);
 			}
 		},
-		async addUser(ctx, creds) {
-			let user = await newUser(creds.name, creds.email);
-			if (user.error) {
-				ctx.commit('setError', user.reason.message);
-			} else {
-				ctx.commit('addOne', user);
-			}
-		},
-		async editUser(ctx, data) {
+		async editUser(context, data) {
 			let user = await updateUser(data.id, data.name, data.email);
 			if (user.error) {
-				ctx.commit('setError', user.reason.message);
+				context.commit('setError', user.reason.message);
 			} else {
-				ctx.commit('updateUser', user);
+				context.commit('updateUser', user);
 			}
 		},
 	},

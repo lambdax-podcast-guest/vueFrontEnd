@@ -67,7 +67,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["addUser", "signIn"]),
+    ...mapActions(["register", "signIn"]),
     async createAccount() {
       this.error = "";
       if (
@@ -77,12 +77,17 @@ export default {
         this.input.email.includes("@")
       ) {
         this.disable = true;
-        await this.addUser({
-          name: `${this.input.firstName} ${this.input.lastName}`,
-          email: this.input.email
+        await this.register({
+          firstName: this.input.firstName,
+          lastName: this.input.lastName,
+          email: this.input.email,
+          password: this.input.password,
+          role: [
+            this.input.checkedHost ? "Host" : null,
+            this.input.checkedGuest ? "Guest" : null
+          ]
         });
         this.signIn();
-        this.$router.push("guestlist");
       } else {
         this.error = "Please fill out all fields in our form";
       }

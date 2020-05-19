@@ -39,7 +39,6 @@ export default {
       this.input.email = "";
       this.input.password = "";
       this.signIn();
-      this.$router.push("guestlist");
     }
   }
 };
