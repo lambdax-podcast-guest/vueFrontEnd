@@ -66,6 +66,21 @@ export default {
       error: ""
     };
   },
+  computed: {
+    roles() {
+      const rolesArray = [];
+
+      if (this.input.checkedHost) {
+        rolesArray.push("Host");
+      }
+
+      if (this.input.checkedGuest) {
+        rolesArray.push("Guest");
+      }
+
+      return rolesArray;
+    }
+  },
   methods: {
     ...mapActions(["register", "signIn"]),
     async createAccount() {
@@ -82,12 +97,9 @@ export default {
           lastName: this.input.lastName,
           email: this.input.email,
           password: this.input.password,
-          role: [
-            this.input.checkedHost ? "Host" : null,
-            this.input.checkedGuest ? "Guest" : null
-          ]
+          roles: this.roles
         });
-        this.signIn();
+        // this.signIn();
       } else {
         this.error = "Please fill out all fields in our form";
       }

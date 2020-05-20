@@ -8,12 +8,12 @@ axios.defaults.baseURL = process.env.VUE_APP_REMOTE_URL;
 async function register(credentials) {
 	try {
 		console.log(credentials);
-		// const data = await axios.post('/Account/Register', credentials);
+		const data = await axios.post('/Account/Register', credentials);
 
 		// console.log(data);
 
-		// const ret = data.data;
-		// return ret;
+		const ret = data.data;
+		return ret;
 	} catch (err) {
 		return error(err);
 	}

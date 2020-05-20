@@ -45,7 +45,7 @@ export default new Vuex.Store({
 			state.current = data;
 			state.error = '';
 		},
-		addOne(state, data) {
+		register(state, data) {
 			state.all.push(data);
 			state.error = '';
 		},
@@ -63,7 +63,8 @@ export default new Vuex.Store({
 			if (user.error) {
 				context.commit('setError', user.reason.message);
 			} else {
-				context.commit('addOne', user);
+				context.commit('register', user);
+				context.commit('signIn');
 				router.push('guestlist');
 			}
 		},
