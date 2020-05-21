@@ -66,8 +66,23 @@ export default {
       error: ""
     };
   },
+  computed: {
+    roles() {
+      const rolesArray = [];
+
+      if (this.input.checkedHost) {
+        rolesArray.push("Host");
+      }
+
+      if (this.input.checkedGuest) {
+        rolesArray.push("Guest");
+      }
+
+      return rolesArray;
+    }
+  },
   methods: {
-    ...mapActions(["addUser", "signIn"]),
+    ...mapActions(["register", "signIn"]),
     async createAccount() {
       this.error = "";
       if (
@@ -77,12 +92,14 @@ export default {
         this.input.email.includes("@")
       ) {
         this.disable = true;
-        await this.addUser({
-          name: `${this.input.firstName} ${this.input.lastName}`,
-          email: this.input.email
+        await this.register({
+          firstName: this.input.firstName,
+          lastName: this.input.lastName,
+          email: this.input.email,
+          password: this.input.password,
+          roles: this.roles
         });
-        this.signIn();
-        this.$router.push("guestlist");
+        // this.signIn();
       } else {
         this.error = "Please fill out all fields in our form";
       }

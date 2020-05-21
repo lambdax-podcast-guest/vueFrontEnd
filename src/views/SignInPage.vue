@@ -34,12 +34,9 @@ export default {
   methods: {
     ...mapActions(["signIn"]),
     login() {
-      console.log(this.input.email);
-      console.log(this.input.password);
+      this.signIn({ email: this.input.email, password: this.input.password });
       this.input.email = "";
       this.input.password = "";
-      this.signIn();
-      this.$router.push("guestlist");
     }
   }
 };
