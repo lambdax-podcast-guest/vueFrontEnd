@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import router from '../router';
 
 import {
 	register,
@@ -44,7 +45,7 @@ export default new Vuex.Store({
 			state.current = data;
 			state.error = '';
 		},
-		addOne(state, data) {
+		register(state, data) {
 			state.all.push(data);
 			state.error = '';
 		},
@@ -62,8 +63,9 @@ export default new Vuex.Store({
 			if (user.error) {
 				context.commit('setError', user.reason.message);
 			} else {
-				context.commit('addOne', user);
-				this.$router.push('guestlist');
+				context.commit('register', user);
+				context.commit('signIn');
+				router.push('guestlist');
 			}
 		},
 		async signIn(context, credentials) {
@@ -73,7 +75,7 @@ export default new Vuex.Store({
 				context.commit('setError', user.error.message);
 			} else {
 				context.commit('signIn');
-				this.$router.push('guestlist');
+				router.push('guestlist');
 			}
 		},
 		signOut(context) {
