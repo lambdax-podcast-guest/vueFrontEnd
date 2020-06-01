@@ -4,7 +4,7 @@
 [build]
   base = "/"
   command = "npm run build"
-  functions = "lambda"
+  # functions = "lambda"
   publish = "dist"
 
 [[redirects]]
