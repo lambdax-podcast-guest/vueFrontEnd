@@ -2,6 +2,7 @@
   ID = "928059cc-4f46-4b8a-9d89-d2c58dfe6d4f"
 
 [build]
+  base = "/"
   command = "npm run build"
   functions = "lambda"
   publish = "dist"
